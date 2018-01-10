@@ -98,6 +98,7 @@ class MarathonClient(object):
         if response is None:
             raise MarathonError('No remaining Marathon servers to try')
 
+        response.encoding = "utf-8"
         if response.status_code >= 500:
             marathon.log.error('Got HTTP {code}: {body}'.format(
                 code=response.status_code, body=response.text.encode('utf-8')))
